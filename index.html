@@ -28,18 +28,19 @@
 
                 <!-- header content page -->
                 <div class="header text-center">
-                    <h1 class="text-gray-400 text-3xl">Esercizio con API di boolean</h1>
+                    <h1 class="text-gray-400 text-3xl">Esercizio con API di boolean randomici</h1>
                 </div>
 
                 <!-- main content page -->
                 <div class="flex flex-wrap justify-between flex-1 ">
-                    <div v-for="people in arrayEmail" class="w-1/2 p-3">
+                    <div v-for="people in arrayEmail" class="w-1/2 p-3" v-if="arrayEmail.length == numMaxEmail">
 
                         <!-- card 1 -->
                         <div class="text-gray-400 border-2 border-gray-800 p-3 ">
                             <div class="">
                                 <p class="font-bold">Name: <span class="font-normal">{{people.name}}</span></p>
                                 <p class="font-bold">Mail: <span class="font-normal">{{people.mail}}</span></p>
+                                <p class="font-bold">Telefono: <span class="font-normal">{{people.phone}}</span></p>
                             </div>
                         </div>
                   

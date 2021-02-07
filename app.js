@@ -3,7 +3,7 @@ new Vue({
     data:{
         test:'test',
         arrayEmail: [],
-        numMaxEmail: 20
+        numMaxEmail: 10,
     },
 
     beforeMount() {
@@ -19,21 +19,24 @@ new Vue({
             // Call to new email e name random
             let emailObject = {
                 name: '',
-                mail: ''
+                mail: '',
+                phone: 0
             }
 
             // avvio chiamate API
             axios
                 .all([
                     axios.get('https://flynn.boolean.careers/exercises/api/random/name'),
-                    axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+                    axios.get('https://flynn.boolean.careers/exercises/api/random/mail'),
+                    axios.get('https://flynn.boolean.careers/exercises/api/random/phone')
                 ])
                 
-                .then(axios.spread((nome, mail) => {
+                .then(axios.spread((nome, mail, phone) => {
                     
                     // value from axios get
                     const valueName = nome.data.response;
                     const valueMail = mail.data.response;
+                    const valuePhone = phone.data.response;
 
                     // print in console value from axios get
                     // console.log('Name: ' + valueName);
@@ -42,6 +45,7 @@ new Vue({
                     // edit emailObject value from value of axios get
                     emailObject.name = valueName;
                     emailObject.mail = valueMail;
+                    emailObject.phone = valuePhone;
 
                     // print ckeck emailObject
                     console.log(emailObject);
