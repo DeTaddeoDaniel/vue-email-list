@@ -9,6 +9,9 @@
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
+    <!-- tailwind style -->
+    <link rel="stylesheet" href="tailwind.css">
+
     <!-- stylesheet css -->
     <link rel="stylesheet" href="app.css">
 
@@ -16,27 +19,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
 
 </head>
-<body>
+<body class="bg-black">
     <div class="wrap">
-        <div class="container">
+        <div class="container mx-auto">
 
             <!-- fonestra email -->
             <div class="content" id="app">
 
                 <!-- header content page -->
-                <div class="header">
-                    <h1>Esercizio con API di boolean</h1>
+                <div class="header text-center">
+                    <h1 class="text-gray-400 text-3xl">Esercizio con API di boolean</h1>
                 </div>
 
                 <!-- main content page -->
-                <div class="">
-                    <div v-for="people in arrayEmail" class="">
+                <div class="flex flex-wrap justify-between flex-1 ">
+                    <div v-for="people in arrayEmail" class="w-1/2 p-3">
 
                         <!-- card 1 -->
-                        <div class="">
+                        <div class="text-gray-400 border-2 border-gray-800 p-3 ">
                             <div class="">
-                                <p class="">Name: <span class="">{{people.name}}</span></p>
-                                <p class="">Mail: <span class="">{{people.mail}}</span></p>
+                                <p class="font-bold">Name: <span class="font-normal">{{people.name}}</span></p>
+                                <p class="font-bold">Mail: <span class="font-normal">{{people.mail}}</span></p>
                             </div>
                         </div>
                   
