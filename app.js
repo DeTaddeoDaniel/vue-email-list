@@ -16,25 +16,35 @@ new Vue({
         }
 
         axios
-            .get('https://flynn.boolean.careers/exercises/api/random/name')
-            .then(function (response) {
-                const result = response.data.response;
-                emailObject.name = result
-            })
+            .all([
+                axios.get('https://flynn.boolean.careers/exercises/api/random/name'),
+                axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+            ])
+            .then(axios.spread((nome, mail) => {
+                
+                // value from axios get
+                const valueName = nome.data.response;
+                const valueMail = mail.data.response;
+
+                // print in console value from axios get
+                console.log('Name: ' + valueName);
+                console.log('Mail: ' + valueMail);
+
+                // edit emailObject value from value of axios get
+                emailObject.name = valueName;
+                emailObject.mail = valueMail;
+
+                // print ckeck emailObject
+                console.log(emailObject);
+
+                // add to emailObject in the array
+                this.arrayEmail.push(emailObject);
+                
+            }))
             .catch(function(error){
-                console.log("error API: "+error);
-            })
-        
-        axios
-            .get('https://flynn.boolean.careers/exercises/api/random/mail')
-            .then(function (response) {
-                const result = response.data.response;
-                emailObject.mail = result
-            })
-            .catch(function(error){
-                console.log("error API: "+error);
+                console.log("error API random name o mail: "+error);
             })
 
-        console.log(emailObject)
+        console.log(this.arrayEmail)
     },
 })
